@@ -1,0 +1,5 @@
+ROMPack/
+.vscode/
+emul
+*.out
+*.o
