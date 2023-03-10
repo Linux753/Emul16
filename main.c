@@ -14,7 +14,12 @@ int main(int argc, char ** argv){
         fprintf(stderr, "Error while initializing the emulator");
     }
 
-    loadROM(&(chip16.cpu), "ROMPack/ROMs/Games/Sokoban.c16");
+    if(argc<2){
+        loadROM(&(chip16.cpu), "ROMPack/ROMs/Demos/Intro.c16");
+    }
+    else{
+        loadROM(&(chip16.cpu), argv[1]);
+    }
     emulateChip16(&chip16);
 
     return EXIT_SUCCESS;
