@@ -288,7 +288,7 @@ void opcode_14_00_LL_HH(struct Chip16 * chip16, uint8_t a, uint8_t b, uint8_t c)
     chip16->cpu.sp +=2;
 
     chip16->cpu.pc = b | (((uint16_t) c)<<8); 
-}
+}  
 
 void opcode_15_00_00_00(struct Chip16 * chip16, uint8_t a, uint8_t b, uint8_t c){
     chip16->cpu.sp -=2;
@@ -831,8 +831,8 @@ void opcode_C2_00_00_00(struct Chip16 * chip16, uint8_t a, uint8_t b, uint8_t c)
 }
 
 void opcode_C3_00_00_00(struct Chip16 * chip16, uint8_t a, uint8_t b, uint8_t c){
-    for(uint8_t x=0xF; x>=0; x--){
-        opcode_C1_0X_00_00(chip16, x, 0, 0);
+    for(uint8_t x=0x10; x>0; x--){
+        opcode_C1_0X_00_00(chip16, x-1, 0, 0);
     }
 }
 
