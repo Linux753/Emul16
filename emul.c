@@ -24,6 +24,9 @@ int fetchOpcode(struct Chip16 * chip16, uint8_t * a, uint8_t * b, uint8_t * c){
     if(i == OPCODE_NB){
         fprintf(stderr, "Error : unknown opcode %d\n", id);
     }
+    if(id == 05 || id == 06){
+        fprintf(stderr, "Opcode : %x\n", id);
+    }
     return i;
 }
 

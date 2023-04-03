@@ -363,7 +363,9 @@ void opcode_31_YX_00_00(struct Chip16 * chip16, uint8_t a, uint8_t b, uint8_t c)
 
 void opcode_40_0X_LL_HH(struct Chip16 * chip16, uint8_t a, uint8_t b, uint8_t c){
     
-    int16_t nb1 = (((uint16_t) c)<<8 )| b;
+    int16_t nb1;
+    uint16_t value = ((((uint16_t) c)<<8 )| b);
+    memcpy(&nb1, &value, sizeof(nb1));
     int16_t nb2 = chip16->cpu.reg[a];
 
     chip16->cpu.C = __builtin_add_overflow(nb2, nb1, &(chip16->cpu.reg[a]))? 1:0;
@@ -699,7 +701,7 @@ void opcode_A2_YX_0Z_00(struct Chip16 * chip16, uint8_t a, uint8_t b, uint8_t c)
 }
 
 int16_t modulo(int16_t a, int16_t b){
-    return (a%b>=0)? a%b: a%b + b; 
+    return (a%b>=0 || b<0)? a%b: a%b + b; 
 }
 
 void opcode_A3_0X_LL_HH(struct Chip16 * chip16, uint8_t a, uint8_t b, uint8_t c){
@@ -747,16 +749,7 @@ void opcode_A7_YX_00_00(struct Chip16 * chip16, uint8_t a, uint8_t b, uint8_t c)
     chip16->cpu.N = chip16->cpu.reg[x]<0? 1:0;
 }
 
-void opcode_A8_YX_0Z_00(struct Chip16 * chip16, uint8_t a, uint8_t b, uint8_t c){
-    uint8_t x = (a&0x0F);
-    uint8_t y = (a&0xF0)>>4;
-    uint8_t z = (b&0x0F);
-
-    chip16->cpu.reg[z] = chip16->cpu.reg[x]%chip16->cpu.reg[y];
-
-    chip16->cpu.Z = chip16->cpu.reg[z] == 0? 1:0;
-    chip16->cpu.N = chip16->cpu.reg[z]<0? 1:0;
-}
+ 
 
 void opcode_B0_0X_0N_00(struct Chip16 * chip16, uint8_t a, uint8_t b, uint8_t c){
     chip16->cpu.reg[a] = chip16->cpu.reg[a]<<b;

@@ -75,6 +75,7 @@ void opcode_A4_YX_00_00(struct Chip16 * chip16, uint8_t a, uint8_t b, uint8_t c)
 void opcode_A5_YX_0Z_00(struct Chip16 * chip16, uint8_t a, uint8_t b, uint8_t c);
 void opcode_A6_0X_LL_HH(struct Chip16 * chip16, uint8_t a, uint8_t b, uint8_t c);
 void opcode_A7_YX_00_00(struct Chip16 * chip16, uint8_t a, uint8_t b, uint8_t c);
+void opcode_A8_YX_0Z_00(struct Chip16 * chip16, uint8_t a, uint8_t b, uint8_t c);
 
 void opcode_B0_0X_0N_00(struct Chip16 * chip16, uint8_t a, uint8_t b, uint8_t c);
 void opcode_B1_0X_0N_00(struct Chip16 * chip16, uint8_t a, uint8_t b, uint8_t c);

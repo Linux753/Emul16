@@ -390,6 +390,7 @@ void initJumpTable(struct SJump * jump){
     jump->id[77] = 0x16;
     jump->id[78] = 0x17;
     jump->id[79] = 0x18;
+    jump->id[80] = 0xA8;
 }
 
 void initOpcodeFcts(struct Chip16 * chip16){
@@ -488,6 +489,7 @@ void initOpcodeFcts(struct Chip16 * chip16){
     chip16->opcodeFcts[77] = opcode_16_0X_00_00;
     chip16->opcodeFcts[78] = opcode_17_0x_LL_HH;
     chip16->opcodeFcts[79] = opcode_18_0X_00_00;
+    chip16->opcodeFcts[80] = opcode_A8_YX_0Z_00;
 }
 
 int initChip16(struct Chip16 * chip16){

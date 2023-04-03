@@ -3,7 +3,7 @@
 
 #define MEMORY_SIZE 65536
 #define CURSOR0 0x0000
-#define OPCODE_NB 80
+#define OPCODE_NB 81
 //#define STACK_SIZE 16
 
 #define PIXEL_DIM 4
@@ -38,7 +38,7 @@ struct SJump{
 struct cpu16{
     uint8_t mem[MEMORY_SIZE]; //Memory size to adjust !!!
     uint16_t pc;
-    int16_t reg[16];;
+    int16_t reg[16];
 
     uint16_t sp;
 
